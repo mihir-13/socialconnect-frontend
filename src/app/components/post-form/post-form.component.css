@@ -1,0 +1,40 @@
+.postDiv {
+  background-color: #233592;
+}
+
+form {
+  background-color: #fff;
+}
+
+.formDiv {
+  margin: 0px 20px 0px 20px;
+}
+
+.addImageBtn {
+  margin-bottom: 5px;
+}
+
+.postBtn {
+  background-color: #233592 !important;
+  float: right;
+  margin-bottom: 5px;
+}
+
+.btn {
+  background-color: #233592 !important;
+}
+
+.file-field input[type='file'] {
+  width: 70% !important;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+  color: #233592 !important;
+ }
+
+/* label underline focus color */
+ .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #233592 !important;
+  box-shadow: 0 1px 0 0 #233592 !important;
+ }

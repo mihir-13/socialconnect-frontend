@@ -1,0 +1,49 @@
+.btn {
+  background-color: #233592 !important;
+}
+
+.postDiv {
+  background-color: #233592 !important;
+}
+
+form {
+  background-color: #fff;
+}
+
+.formDiv {
+  margin: 0px 20px 0px 20px;
+}
+
+.addImageBtn {
+  margin-bottom: 5px;
+}
+
+.postBtn {
+  margin-bottom: 5px;
+}
+
+.title {
+  font-weight: bold;
+  color: #64b5f6;
+}
+
+.time {
+  font-size: 14px;
+  color: #666565;
+}
+
+.postComment {
+  font-size: 15px;
+}
+
+
+/* label focus color */
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+  color: #233592 !important;
+ }
+
+/* label underline focus color */
+ .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #233592 !important;
+  box-shadow: 0 1px 0 0 #233592 !important;
+ }
