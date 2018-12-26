@@ -1,1 +1,1 @@
-web: mpm app.module.ts
+web: npm start
