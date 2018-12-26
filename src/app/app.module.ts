@@ -21,7 +21,7 @@ import { TokenInterceptor } from './services/token-interceptor';
     StreamsModule,
     StreamsRoutingModule
   ],
-  providers: [CookieService ,{
+  providers: [CookieService , {
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
   }],
   bootstrap: [AppComponent]

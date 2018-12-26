@@ -9,6 +9,13 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": "10.10.0"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.0",
