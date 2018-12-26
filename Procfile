@@ -1,1 +1,1 @@
-web: node main.ts
+web: mpm app.module.ts
