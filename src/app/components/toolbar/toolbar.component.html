@@ -12,7 +12,7 @@
           </span>
           <ul id='dropdown' class='dropdown-content col s12 collection'>
             <li class="collection-item avatar" *ngFor="let data of notifications">
-              <img src="http://placehold.it/50x50" class="circle">
+              <img src="https://res.cloudinary.com/mihirb/image/upload/v{{data.senderId.picVersion}}/{{data.senderId.picId}}" class="circle">
               <span [ngClass]="data.read ? 'isRead' : 'unread'">{{data.message}}</span>
               <p class="time">{{DisplayTime(data.created)}}</p>
             </li>
@@ -33,17 +33,18 @@
             {{ msgNumber }}
           </span>
           <ul id='dropdown1' class='dropdown-content col s12 collection'>
-            <li class="collection-item avatar" *ngFor="let chat of chatList" [routerLink]="['/chat', chat.receiverId.username]">
-              <img src="http://placehold.it/50x50" class="circle">
+            <li class="collection-item avatar" *ngFor="let chat of chatList" (click)="GoToChatPage(chat.receiverId.username)">
+              <img src="https://res.cloudinary.com/mihirb/image/upload/v{{chat.receiverId.picVersion}}/{{chat.receiverId.picId}}" class="circle">
               <span class="title">
                 {{ chat.receiverId.username }}
-                <a class="secondary-content">
+                <a class="secondary-content forDate">
                   {{ MessageDate(chat.msgId.message[chat.msgId.message.length-1].createdAt) }}
                 </a>
               </span>
               <p>
                   {{ chat.msgId.message[chat.msgId.message.length-1].body }}
-                <a class="secondary-content" *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead">
+                <a class="secondary-content" *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead &&
+                 chat.receiverId.username !== chat.msgId.message[chat.msgId.message.length-1].receivername">
                   <i class="material-icons">brightness_1</i>
 
                 </a>
@@ -54,17 +55,13 @@
 
             </li>
             <li *ngIf="chatList.length <= 0">
-              <p class="class">No Notification.</p>
+              <p class="class">No Messages.</p>
             </li>
             <p class="secondary-content">
-              <a class="markAll btn" (click)="MarkAll()">Mark all as Read.</a>
+              <a class="markAll btn" (click)="MarkAllMessages()">Mark all as Read.</a>
             </p>
           </ul>
         </li>
-
-
-
-
 
 
         <li><a (click)="logout()">Logout</a></li>
@@ -72,7 +69,7 @@
     </div>
     <div class="nav-content">
       <div class="nav-div">
-        <img class="circle responsive-img" src="http://placehold.it/50x50">
+        <img class="circle responsive-img" src="https://res.cloudinary.com/mihirb/image/upload/v{{imageVersion}}/{{imageId}}">
         <h1 class="profile-name">{{user.username}}</h1>
         <p class="user-text">{{user.email}}</p>
       </div>

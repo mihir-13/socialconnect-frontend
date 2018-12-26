@@ -14,6 +14,13 @@
 }
 
 .time {
+  font-size: 10px;
+  color: #666565;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.cityStyle {
   font-size: 14px;
   color: #666565;
 }
@@ -51,7 +58,9 @@
 }
 
 .collection {
-  border: none !important;
+  /* border: none !important; */
+  /* border-width: 3px;
+  border-style: outset; */
 }
 
 .collection-item {
@@ -61,3 +70,8 @@
 .forCommentIconSpacing {
   margin-left: 35px;
 }
+
+/* .bordrCheck {
+  border-width: 3px;
+  border-style: outset;
+} */

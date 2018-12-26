@@ -4,12 +4,14 @@
       <div class="card">
         <div class="valign-wrapper">
           <div class="col s12 imgCol">
-            <img src="http://placehold.it/50x50" class="circle">
+            <img *ngIf="receiverData" src="https://res.cloudinary.com/mihirb/image/upload/v{{receiverData.picVersion}}/{{receiverData.picId}}" class="imgCircle">
           </div>
           <div class="row">
             <div class="col s10 nameCol">
-              <span>{{ receiver }}</span>
-              <p class="isOnline">Online</p>
+              <span>
+                {{ receiver }}
+                <p class="isOnline" *ngIf="isOnline">Online</p>
+              </span>
             </div>
           </div>
         </div>
@@ -65,7 +67,20 @@
               </textarea>
             </div>
             <div class="input-field col s1 emojiDiv">
-              <button class="emojiBtn">Emoji</button>
+                <button class="emojiBtn" (click)="Toggled()">😄</button>
+                <div class="emoji-content-editable"
+                (emojiPickerCaretEmitter)="HandleCurrentCaret($event)"
+                (input)="content = $event.target.textContent"
+                [textContent]="content"
+                contenteditable="true"></div>
+              <i
+                class="emoji-toggle-button imgBtn"
+                [(emojiPickerIf)]="toggled"
+                [emojiPickerPreserveSelection]="false"
+                [emojiPickerDirection]="direction"
+                [emojiPickerAutofocus]="true"
+                (emojiPickerSelect)="HandleSelection($event)"></i>
+
             </div>
 
             <div class="input-field col s1">

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { UsersService } from 'src/app/services/users.service';
 import io from 'socket.io-client';
+import { Router, NavigationStart, NavigationEnd, Event } from '@angular/router';
 
 @Component({
   selector: 'app-side',
@@ -13,9 +14,18 @@ export class SideComponent implements OnInit {
   socket: any;
   user: any;
   userData: any;
+  showLoadingIndicator = true;
 
-  constructor(private tokenService: TokenService, private userService: UsersService) {
+  constructor(private tokenService: TokenService, private userService: UsersService, private router: Router) {
     this.socket = io('http://localhost:3000');
+    this.router.events.subscribe((routerEvent: Event) => {
+      if (routerEvent instanceof NavigationStart) {
+        this.showLoadingIndicator = true;
+      }
+      if (routerEvent instanceof NavigationEnd) {
+        this.showLoadingIndicator = false;
+      }
+    });
    }
 
   ngOnInit() {

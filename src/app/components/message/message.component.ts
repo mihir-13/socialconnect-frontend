@@ -1,17 +1,20 @@
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from './../../services/users.service';
 import { TokenService } from 'src/app/services/token.service';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MessageService } from 'src/app/services/message.service';
 import io from 'socket.io-client';
+import { CaretEvent, EmojiEvent } from 'ng2-emoji-picker';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
-export class MessageComponent implements OnInit, AfterViewInit {
+export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
 
+  @Input() users;
   receiver: string;
   receiverData: any;
   user: any;
@@ -20,6 +23,16 @@ export class MessageComponent implements OnInit, AfterViewInit {
   socket: any;
   typingMessage;
   typing = false;
+  isOnline = false;
+
+  public eventMock;
+  public eventPosMock;
+
+  public direction = Math.random() > 0.5 ? (Math.random() > 0.5 ? 'top' : 'bottom') : (Math.random() > 0.5 ? 'right' : 'left');
+  public toggled = false;
+  public content = ' ';
+
+  private _lastCaretEvent: CaretEvent;
 
   constructor(private messageService: MessageService, private tokenService: TokenService, private userService: UsersService,
     private route: ActivatedRoute) {
@@ -53,6 +66,20 @@ export class MessageComponent implements OnInit, AfterViewInit {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    const title = document.querySelector('.nameCol');
+    if (changes.users.currentValue.length > 0) {
+      const result = _.indexOf(changes.users.currentValue, this.receiver);
+      if (result > -1) {
+        this.isOnline = true;
+        (title as HTMLElement).style.marginTop = '10px';
+      } else {
+        this.isOnline = false;
+        (title as HTMLElement).style.marginTop = '-10px';
+      }
+    }
+  }
+
   ngAfterViewInit() {
     const params = {
       room1: this.user.username,
@@ -65,6 +92,7 @@ export class MessageComponent implements OnInit, AfterViewInit {
   GetUserByUsername(name) {
     this.userService.GetUserByUsername(name).subscribe(data => {
       this.receiverData = data.result;
+      console.log('RecvrDAta', this.receiverData);
       this.GetMessages(this.user._id, data.result._id);
     });
   }
@@ -101,6 +129,24 @@ export class MessageComponent implements OnInit, AfterViewInit {
           this.message = '';
         });
     }
+  }
+
+  HandleSelection(event: EmojiEvent) {
+    this.content = this.content.slice(0, this._lastCaretEvent.caretOffset) + event.char +
+     this.content.slice(this._lastCaretEvent.caretOffset);
+    this.eventMock = JSON.stringify(event);
+    this.message = this.content;
+    this.toggled = !this.toggled;
+    this.content = '';
+  }
+
+  HandleCurrentCaret(event: CaretEvent) {
+    this._lastCaretEvent = event;
+    this.eventPosMock = `{ caretOffset : ${event.caretOffset}, caretRange: Range{...}, textContent: ${event.textContent} }`;
+  }
+
+  Toggled() {
+    this.toggled = !this.toggled;
   }
 
 }

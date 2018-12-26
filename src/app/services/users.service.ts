@@ -48,4 +48,25 @@ export class UsersService {
     });
   }
 
+  AddImage(image): Observable<any> {
+    return this.http.post(`${BASEURL}/upload-image`, {
+      image
+    });
+  }
+
+  SetDefaultImage(imageId, imageVersion): Observable<any> {
+    return this.http.get(`${BASEURL}/set-default-image/${imageId}/${imageVersion}`);
+    // return this.http.get(`${BASEURL}/set-default-image?id=${imageId}?version=${imageVersion}`);
+  }
+
+  ProfileNotifications(id): Observable<any> {
+    return this.http.post(`${BASEURL}/user/view-profile`, {
+      id
+    });
+  }
+
+  ChangePAssword(body): Observable<any> {
+    return this.http.post(`${BASEURL}/change-password`, body);
+  }
+
 }

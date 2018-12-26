@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UsersService } from './../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import _ from 'lodash';
@@ -15,8 +16,9 @@ export class PeopleComponent implements OnInit {
   loggedInUser: any;
   userArr = [];
   socket: any;
+  onlineUsers = [];
 
-  constructor(private usersService: UsersService, private tokenService: TokenService) {
+  constructor(private usersService: UsersService, private tokenService: TokenService, private router: Router ) {
     this.socket = io('http://localhost:3000');
    }
 
@@ -53,6 +55,29 @@ export class PeopleComponent implements OnInit {
   CheckInArray(arr, id) {
     const result = _.find(arr, ['userFollowed._id', id]);
     if (result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  ViewUser(user) {
+    this.router.navigate([user.username]);
+    if (this.loggedInUser.username !== user.username) {
+     // console.log(user.username);
+      this.usersService.ProfileNotifications(user._id).subscribe(data => {
+        this.socket.emit('refresh', {});
+      }, err => console.log(err));
+    }
+  }
+
+  onilne(event) {
+    this.onlineUsers = event;
+  }
+
+  checkIfOnline(name) {
+    const result = _.indexOf(this.onlineUsers, name);
+    if (result > -1) {
       return true;
     } else {
       return false;

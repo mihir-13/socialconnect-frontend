@@ -33,7 +33,6 @@ export class FollowersComponent implements OnInit {
   GetUser() {
     this.usersService.GetUserById(this.user._id).subscribe(data => {
       this.followers = data.result.followers;
-      console.log('Followers', this.followers);
     }, err => console.log(err));
   }
 

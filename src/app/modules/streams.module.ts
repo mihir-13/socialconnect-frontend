@@ -21,6 +21,11 @@ import { TopStreamsComponent } from '../components/top-streams/top-streams.compo
 import { ChatComponent } from '../components/chat/chat.component';
 import { MessageComponent } from '../components/message/message.component';
 import { NgxAutoScrollModule } from 'ngx-auto-scroll';
+import { EmojiPickerModule } from 'ng2-emoji-picker';
+import { ImagesComponent } from '../components/images/images.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { ViewUserComponent } from '../components/view-user/view-user.component';
+import { ChangePasswordComponent } from '../components/change-password/change-password.component';
 
 @NgModule({
   imports: [
@@ -29,11 +34,13 @@ import { NgxAutoScrollModule } from 'ngx-auto-scroll';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    NgxAutoScrollModule
+    NgxAutoScrollModule,
+    FileUploadModule,
+    EmojiPickerModule.forRoot()
   ],
   declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent,
      CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent,
-      NotificationsComponent, TopStreamsComponent, ChatComponent, MessageComponent],
+      NotificationsComponent, TopStreamsComponent, ChatComponent, MessageComponent, ImagesComponent, ViewUserComponent, ChangePasswordComponent],
   exports: [StreamsComponent, ToolbarComponent],
   providers: [TokenService, PostService, UsersService, MessageService]
 })

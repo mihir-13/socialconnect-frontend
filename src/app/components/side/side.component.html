@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col s12 m4">
-    <a>
+    <a *ngIf="userData" [routerLink]="['', userData.username]">
       <span>
         Posts
       </span>
@@ -52,13 +52,24 @@
       <div>Followers<a href="#!" class="secondary-content"><i class="material-icons">people_outline</i></a></div>
     </a>
   </li>
-  <li class="collection-item">
-    <div>Photos<a href="#!" class="secondary-content"><i class="material-icons">photo_library</i></a></div>
+  <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+    <a [routerLink]="['/images', user.username]">
+      <div>Photos<a href="#!" class="secondary-content"><i class="material-icons">photo_library</i></a></div>
+    </a>
   </li>
   <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
     <a [routerLink]="['/notifications']">
       <div>Notifications<a href="#!" class="secondary-content"><i class="material-icons">alarm</i></a></div>
     </a>
-
   </li>
+  <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+      <a [routerLink]="['/account/password']">
+        <div>Change Password<a href="#!" class="secondary-content"><i class="material-icons">vpn_key</i></a></div>
+      </a>
+    </li>
 </ul>
+
+<div *ngIf="showLoadingIndicator" class="spinner"></div>
+
+<router-outlet></router-outlet>
+
