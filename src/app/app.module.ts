@@ -10,6 +10,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/token-interceptor';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +22,8 @@ import { TokenInterceptor } from './services/token-interceptor';
     AuthModule,
     AuthRoutingModule,
     StreamsModule,
-    StreamsRoutingModule
+    StreamsRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [CookieService , {
     provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true

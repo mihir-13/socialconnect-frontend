@@ -7,7 +7,6 @@ import * as M from 'materialize-css';
 import * as moment from 'moment';
 import io from 'socket.io-client';
 import _ from 'lodash';
-
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -45,6 +44,7 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.socket.on('usersOnline', (data) => {
+      console.log('DATA1', data);
       this.onlineUsers.emit(data);
     });
   }
@@ -68,6 +68,7 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
         this.count = value;
         this.chatList = (data.result.chatList).reverse();
         console.log('CHATLIST', this.chatList);
+        console.log('DATA2', data);
         this.CheckIfMessageIsRead(this.chatList);
       }
       //  else {

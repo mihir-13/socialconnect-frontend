@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build --prod && firebase deploy"
   },
   "engines": {
     "node": "10.10.0",
@@ -23,24 +24,25 @@
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
+    "@angular/fire": "^5.1.1",
     "@angular/forms": "^6.1.0",
     "@angular/http": "^6.1.0",
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "core-js": "^2.5.4",
+    "firebase": "^5.7.1",
     "lodash": "^4.17.11",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.22.2",
-    "ng2-emoji-picker": "^1.4.8",
     "ng2-file-upload": "^1.3.0",
     "ngx-auto-scroll": "^1.1.0",
     "ngx-cookie-service": "^1.0.10",
     "rxjs": "~6.2.0",
     "rxjs-compat": "^6.3.3",
     "socket.io-client": "^2.1.1",
-    "zone.js": "~0.8.26",
-    "typescript": "~2.9.2"
+    "typescript": "~2.9.2",
+    "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
