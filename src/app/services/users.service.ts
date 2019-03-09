@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Url } from '../config/url';
 
 // const BASEURL = 'https://social-connect-542be.firebaseapp.com/api/socialconnect';
- const BASEURL = 'mongodb+srv://admin-mihir:rastablasta1@cluster0-78ren.mongodb.net/api/socialconnect';
-// const BASEURL = 'http://localhost:3000/api/socialconnect';
+// const BASEURL = 'mongodb+srv://admin-mihir:rastablasta1@cluster0-78ren.mongodb.net/api/socialconnect';
+ const BASEURL = 'http://localhost:3000/api/socialconnect';
 // const BASEURL = 'https://polar-lake-36384.herokuapp.com/api/socialconnect';
 
 

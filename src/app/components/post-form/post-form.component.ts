@@ -51,9 +51,7 @@ export class PostFormComponent implements OnInit {
         image: this.selectedFile
       };
     }
-    console.log('Sending post details', body1);
     this.postService.addPost(body1).subscribe(data => {
-      console.log('Data Post', data);
       this.socket.emit('refresh', {});
       this.postForm.reset();
     }, err => {

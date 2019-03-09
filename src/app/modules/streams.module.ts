@@ -21,7 +21,7 @@ import { TopStreamsComponent } from '../components/top-streams/top-streams.compo
 import { ChatComponent } from '../components/chat/chat.component';
 import { MessageComponent } from '../components/message/message.component';
 import { NgxAutoScrollModule } from 'ngx-auto-scroll';
-// import { EmojiPickerModule } from 'ng2-emoji-picker';
+import { EmojiPickerModule } from 'ng2-emoji-picker';
 import { ImagesComponent } from '../components/images/images.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
@@ -39,8 +39,8 @@ import { environment } from '../../environments/environment';
     RouterModule,
     NgxAutoScrollModule,
     FileUploadModule,
-    AngularFireModule.initializeApp(environment.firebase)
-    // EmojiPickerModule.forRoot()
+    AngularFireModule.initializeApp(environment.firebase),
+    EmojiPickerModule.forRoot()
   ],
   declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent,
      CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent,

@@ -130,6 +130,10 @@ li.dropdown-button {
   margin-left: 20px !important;
 }
 
+.forMsgBody {
+  width: 40px !important;
+}
+
 /* .nav-label-icon {
   top: -9px;
 position: relative;

@@ -41,7 +41,7 @@
                   {{ MessageDate(chat.msgId.message[chat.msgId.message.length-1].createdAt) }}
                 </a>
               </span>
-              <p>
+              <p class="forMsgBody">
                   {{ chat.msgId.message[chat.msgId.message.length-1].body }}
                 <a class="secondary-content" *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead &&
                  chat.receiverId.username !== chat.msgId.message[chat.msgId.message.length-1].receivername">
