@@ -9,6 +9,10 @@ nav {
   font-size: 30px;
 }
 
+div.mainPageContainer {
+  width: 90%;
+}
+
 .navDiv {
   background-color: #233592;
 }
@@ -144,5 +148,3 @@ width: 35px !important;
 height: 35px !important;
 }
  */
-
-

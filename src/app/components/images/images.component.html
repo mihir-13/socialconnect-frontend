@@ -1,6 +1,6 @@
 <app-toolbar></app-toolbar>
 
-<div class="container" style="margin-top: 30px">
+<div class="container" style="margin-top: 30px; width: 90%">
   <div class="row">
     <div class="col s12 m4 l3">
       <app-side></app-side>
@@ -11,7 +11,7 @@
           <div class="file-field input-field">
             <div class="btn fileUploadBtn">
               <span>File</span>
-              <input type="file" ng2FileSelect [uploader]= "uploader" (onFileSelected)="onFileSelected($event)">
+              <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)">
             </div>
             <div class="file-path-wrapper">
               <input class="file-path validate" id="filePath" type="text">
@@ -28,7 +28,8 @@
       <div class="row">
         <div class="col s12 m6 l4" *ngFor="let image of images">
           <div class="item-img-wrap imgDiv">
-            <img class="imgCircle" src="https://res.cloudinary.com/mihirb/image/upload/v{{image.imgVersion}}/{{image.imgId}}">
+            <img class="imgCircle"
+              src="https://res.cloudinary.com/mihirb/image/upload/v{{image.imgVersion}}/{{image.imgId}}">
             <button class="btn imgBtn" (click)="SetPrfofileImage(image)">Set as Profile Image</button>
           </div>
         </div>

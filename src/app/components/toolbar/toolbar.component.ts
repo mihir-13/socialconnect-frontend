@@ -69,6 +69,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
         this.chatList = (data.result.chatList).reverse();
         console.log('CHATLIST', this.chatList);
         console.log('DATA2', data);
+        console.log('imageId', this.imageId);
+        console.log('imageVersion', this.imageVersion);
         this.CheckIfMessageIsRead(this.chatList);
       }
       //  else {
@@ -95,10 +97,10 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < arr.length; i++) {
       const receivr = arr[i].msgId.message[arr[i].msgId.message.length - 1];
       if (this.router.url !== `/chat/${receivr.sendername}`) {
-        if (receivr.isRead === false && receivr.receivername === this.user.username ) {
-           checkArr.push(1);
-           this.msgNumber = _.sum(checkArr);
-           console.log('Msgnumber', this.msgNumber);
+        if (receivr.isRead === false && receivr.receivername === this.user.username) {
+          checkArr.push(1);
+          this.msgNumber = _.sum(checkArr);
+          console.log('Msgnumber', this.msgNumber);
         }
       }
     }

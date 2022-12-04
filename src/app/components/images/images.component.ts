@@ -25,7 +25,7 @@ export class ImagesComponent implements OnInit {
 
   constructor(private userServices: UsersService, private tokenService: TokenService) {
     this.socket = io('http://localhost:3000');
-   }
+  }
 
   ngOnInit() {
     this.user = this.tokenService.GetPayload();
@@ -46,18 +46,19 @@ export class ImagesComponent implements OnInit {
     const file: File = event[0];
 
     this.ReadAsBase64(file).then(result => {
-       this.selectedFile = result;
+      this.selectedFile = result;
     }).catch(err => console.log(err));
   }
 
   Upload() {
     if (this.selectedFile) {
+      console.log('this.selectedFile', this.selectedFile);
       this.userServices.AddImage(this.selectedFile).subscribe(data => {
         this.socket.emit('refresh', {});
         const filePath = <HTMLInputElement>document.getElementById('filePath');
         filePath.value = '';
       },
-      err => console.log(err));
+        err => console.log(err));
     }
   }
 
@@ -76,6 +77,7 @@ export class ImagesComponent implements OnInit {
   }
 
   SetPrfofileImage(image) {
+    console.log('image.imgId 123', image.imgId, image.imgVersion);
     this.userServices.SetDefaultImage(image.imgId, image.imgVersion).subscribe(data => {
       this.socket.emit('refresh', {});
     }, err => {

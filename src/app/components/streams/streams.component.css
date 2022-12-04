@@ -1,5 +1,4 @@
-
-.tabs a{
+.tabs a {
   color: #233592;
   font-weight: bold;
   font-size: 18px;
@@ -9,7 +8,11 @@
   background: inherit !important;
 }
 
- .container {
+div.bck {
+  width: 90%;
+}
+
+.container {
   /* background-color: #F8F8F8 !important; */
 }
 

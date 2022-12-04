@@ -1,7 +1,7 @@
 <nav class="nav-extended">
-  <div class="container">
+  <div class="container mainPageContainer">
     <div class="nav-wrapper">
-      <a (click)="GoToHome()" class="brand-logo">Bkc</a>
+      <a (click)="GoToHome()" class="brand-logo">Social Connect</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li class="dropdown-button dropdown-trigger" data-target="dropdown">
           <i class="fa fa-bell fa-1.5x badge">
@@ -12,7 +12,9 @@
           </span>
           <ul id='dropdown' class='dropdown-content col s12 collection'>
             <li class="collection-item avatar" *ngFor="let data of notifications">
-              <img src="https://res.cloudinary.com/mihirb/image/upload/v{{data.senderId.picVersion}}/{{data.senderId.picId}}" class="circle">
+              <img
+                src="https://res.cloudinary.com/mihirb/image/upload/v{{data.senderId.picVersion}}/{{data.senderId.picId}}"
+                class="circle">
               <span [ngClass]="data.read ? 'isRead' : 'unread'">{{data.message}}</span>
               <p class="time">{{DisplayTime(data.created)}}</p>
             </li>
@@ -33,8 +35,11 @@
             {{ msgNumber }}
           </span>
           <ul id='dropdown1' class='dropdown-content col s12 collection'>
-            <li class="collection-item avatar" *ngFor="let chat of chatList" (click)="GoToChatPage(chat.receiverId.username)">
-              <img src="https://res.cloudinary.com/mihirb/image/upload/v{{chat.receiverId.picVersion}}/{{chat.receiverId.picId}}" class="circle">
+            <li class="collection-item avatar" *ngFor="let chat of chatList"
+              (click)="GoToChatPage(chat.receiverId.username)">
+              <img
+                src="https://res.cloudinary.com/mihirb/image/upload/v{{chat.receiverId.picVersion}}/{{chat.receiverId.picId}}"
+                class="circle">
               <span class="title">
                 {{ chat.receiverId.username }}
                 <a class="secondary-content forDate">
@@ -42,7 +47,7 @@
                 </a>
               </span>
               <p class="forMsgBody">
-                  {{ chat.msgId.message[chat.msgId.message.length-1].body }}
+                {{ chat.msgId.message[chat.msgId.message.length-1].body }}
                 <a class="secondary-content" *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead &&
                  chat.receiverId.username !== chat.msgId.message[chat.msgId.message.length-1].receivername">
                   <i class="material-icons">brightness_1</i>
@@ -67,9 +72,11 @@
         <li><a (click)="logout()">Logout</a></li>
       </ul>
     </div>
+    <!-- https://res.cloudinary.com/mihirb/image/upload/v{{this.imageVersion}}/{{this.imageId}} -->
     <div class="nav-content">
       <div class="nav-div">
-        <img class="circle responsive-img" src="http://placehold.it/50x50">
+        <img class="circle responsive-img"
+          src="https://res.cloudinary.com/mihirb/image/upload/v{{this.imageVersion}}/{{this.imageId}}">
         <h1 class="profile-name">{{user.username}}</h1>
         <p class="user-text">{{user.email}}</p>
       </div>
